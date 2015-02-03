@@ -1,0 +1,160 @@
+package roman;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConvertRoman {
+
+	public static void main(String[] args){
+		
+	}
+	
+	public static void convertRoman(String args){
+		I_Converter icon = pruefeParameter(args);
+		icon.convert();
+	}
+	
+	private static I_Converter ermittleVerfahren(String args) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String toRoman(int zahl){
+		return "x"+ zahl;
+	}
+	
+	public static int fromRoman(String rome){
+		
+		List<Integer> numbers = convertToNumbers(rome);
+		List<Integer> values = applySubtracts(numbers);
+		return add(values);
+	}
+	
+	private static void gebeAus(String s){
+		System.out.println(s);
+	}
+	
+	private static void gebeAus(int i){
+		System.out.println(i);
+	}
+	
+	private static List<Integer> convertToNumbers(String rome) {
+		List<Integer> numbers = new ArrayList<Integer>();
+		for(char zeichen: rome.toCharArray()){
+			switch (zeichen) {
+			case 'I':
+				numbers.add(1);
+				break;
+			case 'V':
+				numbers.add(5);
+				break;
+			case 'X':
+				numbers.add(10);
+				break;
+			case 'L':			
+				numbers.add(50);
+				break;
+			case 'C':			
+				numbers.add(100);
+				break;
+			case 'D':			
+				numbers.add(500);
+				break;
+			case 'M':
+				numbers.add(1000);
+				break;
+			}
+		}
+		return numbers;
+	}
+	
+	private static List<Integer> applySubtracts(List<Integer> numbers) {
+		List<Integer> values = new ArrayList<Integer>();
+		for(int i = 0; i < numbers.size(); i++){
+			if(i < numbers.size()-1 && numbers.get(i) < numbers.get(i+1)){
+				values.add(numbers.get(i+1) - numbers.get(i));
+				i++;
+			}				
+			else
+				values.add(numbers.get(i));
+		}
+		return values;
+	}
+	
+	private static int add(List<Integer> values) {
+		int summe = 0;
+		for(int i: values)
+			summe += i;
+		return summe;
+	}
+
+
+	
+
+
+	
+
+
+	/**
+	 * Wandelt eine römische Zahl mittels Addition der Zahlzeichen unter Anwendung der
+	 * Subtraktionsregel in eine dezimal Zahl um
+	 * Es werden nur gültige römische Zahlen korrekt umgewandelt
+	 * @param rome Römsiche Zahl im Bereich 0-3000
+	 * @return dezimale Zahl
+	 */
+	public static int fromRoman1(String rome) {
+		int summe = 0;
+		for (int i = rome.length() - 1; i >= 0; i--) {
+			switch (rome.charAt(i)) {
+			case 'I':
+				summe += 1;
+				break;
+			case 'V':
+				if (i > 0 && rome.charAt(i - 1) == 'I') {
+					summe += 4;
+					i--;
+				} else
+					summe += 5;
+				break;
+			case 'X':
+				if (i > 0 && rome.charAt(i - 1) == 'I') {
+					summe += 9;
+					i--;
+				} else
+					summe += 10;
+				break;
+			case 'L':
+				if (i > 0 && rome.charAt(i - 1) == 'X') {
+					summe += 40;
+					i--;
+				} else
+					summe += 50;
+				break;
+			case 'C':
+				if (i > 0 && rome.charAt(i - 1) == 'X') {
+					summe += 90;
+					i--;
+				} else
+					summe += 100;
+				break;
+			case 'D':
+				if (i > 0 && rome.charAt(i - 1) == 'C') {
+					summe += 400;
+					i--;
+				} else
+					summe += 500;
+				break;
+			case 'M':
+				if (i > 0 && rome.charAt(i - 1) == 'C') {
+					summe += 900;
+					i--;
+				} else
+					summe += 1000;
+				break;
+			default:
+				return 0;
+			}
+		}
+		return summe;
+	}
+}

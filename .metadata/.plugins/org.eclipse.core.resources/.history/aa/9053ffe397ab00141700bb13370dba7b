@@ -44,8 +44,6 @@ public class ConvertRoman {
 		return "x"+ zahl;
 	}
 
-	//public static 
-	
 	private static void toConsole(String s){
 		System.out.println(s);
 	}
