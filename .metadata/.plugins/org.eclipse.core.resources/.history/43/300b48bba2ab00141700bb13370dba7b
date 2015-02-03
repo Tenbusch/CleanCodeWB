@@ -2,11 +2,19 @@ package roman;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ConvertRoman {
 
 	public static void main(String[] args){
-		convertRoman(args[0], 
+		Scanner scan = new Scanner(System.in);
+		
+		String input = "0";
+		while(!input.equals("Ende")){
+		input = scan.next();
+		
+				
+		convertRoman(input, 
 			new I_Converter() {					//toRoman
 			
 			@Override
@@ -30,6 +38,7 @@ public class ConvertRoman {
 				return null;// not used
 			}
 		});
+		}
 	}
 	
 	public static void convertRoman(String args, I_Converter toRoman, I_Converter toArab){

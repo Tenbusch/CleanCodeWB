@@ -48,7 +48,7 @@ public class ConvertRoman {
 
 	public static List<Integer> buildSummands(int zahl){
 		List<Integer> summands = new ArrayList<Integer>();
-		while(zahl > 0){
+		while(zahl > 1){
 			if(zahl - 1000 >= 0){
 				summands.add(1000);
 				zahl -= 1000;

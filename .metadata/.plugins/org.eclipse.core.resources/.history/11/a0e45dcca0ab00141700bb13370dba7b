@@ -1,0 +1,15 @@
+package roman;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestConvertRoman {
+
+	@Test
+	public void test() {
+		String s ="HelloWorld";
+		assertEquals("Just a test to see if everything works ...","HelloWorld", s);
+	}
+
+}

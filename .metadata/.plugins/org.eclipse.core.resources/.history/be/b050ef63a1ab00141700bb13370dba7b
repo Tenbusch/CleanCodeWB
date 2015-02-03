@@ -1,0 +1,38 @@
+package roman;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestConvertRoman {
+
+	@Test
+	public void test() {
+		assertEquals("I",ConvertRoman.convertRoman("I", 
+				new I_Converter() {					//toRoman
+			
+				@Override
+				public int convert(String rome) {
+					return 0;// not used
+				}
+				
+				@Override
+				public String convert(int zahl) {
+					return ConvertRoman.toRoman(zahl);
+				}
+			}, new I_Converter() {					//toArabic
+				
+				@Override
+				public int convert(String rome) {
+					return ConvertRoman.fromRoman(rome);
+				}
+				
+				@Override
+				public String convert(int zahl) {
+					return null;// not used
+				}
+			});, "1");
+		
+	}
+
+}
