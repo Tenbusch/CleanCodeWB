@@ -43,7 +43,7 @@ public class ConvertRoman {
 	public static String toRoman(int zahl){
 		List<Integer> summands = buildSummands(zahl);
 		String romenumbers = convertToRomanDigits(summands);
-		return toSubstract(romenumbers);
+		return "x"+ zahl;
 	}
 
 	public static List<Integer> buildSummands(int zahl){
@@ -76,29 +76,19 @@ public class ConvertRoman {
 	}
 	
 	public static String convertToRomanDigits(List<Integer> summands){
-		String romenumbers = "";
+		String rome = "";
 		for(Integer i: summands){
 			switch(i){
-			case 1000: romenumbers += "M"; break;
-			case  500: romenumbers += "D"; break;
-			case  100: romenumbers += "C"; break;
-			case   50: romenumbers += "L"; break;
-			case   10: romenumbers += "X"; break;
-			case    5: romenumbers += "V"; break;
-			case    1: romenumbers += "I"; break;
+			case 1000: rome += "M"; break;
+			case  500: rome += "D"; break;
+			case  100: rome += "C"; break;
+			case   50: rome += "L"; break;
+			case   10: rome += "X"; break;
+			case    5: rome += "V"; break;
+			case    1: rome += "I"; break;
 			}
 		}
-		return romenumbers;
-	}
-	
-	public static String toSubstract(String romenumbers){
-		romenumbers = romenumbers.replace("VIIII", "IX");
-		romenumbers = romenumbers.replace("IIII", "IV");
-		romenumbers = romenumbers.replace("LXXXX", "XC");
-		romenumbers = romenumbers.replace("XXXX", "XL");
-		romenumbers = romenumbers.replace("DCCCC", "CM");
-		romenumbers = romenumbers.replace("CCCC", "CD");
-		return romenumbers;
+		return rome;
 	}
 	
 	private static void toConsole(String s){
