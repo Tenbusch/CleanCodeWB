@@ -1,7 +1,6 @@
 package roman;
 
-public interface I_Converter {
+public interface I_Converter<TIn, TOut> {
 
-	String convert(int zahl);
-	int convert(String rome);
+	TOut convert(TIn zahl);
 }

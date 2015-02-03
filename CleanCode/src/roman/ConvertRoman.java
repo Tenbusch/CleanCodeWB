@@ -6,33 +6,23 @@ import java.util.List;
 public class ConvertRoman {
 
 	public static void main(String[] args){
-		convertRoman(args[0], 
-			new I_Converter() {					//toRoman
-			
+		chooseConverter(args[0], 
+			new I_Converter<Integer, String>() {		//toRoman
+
 			@Override
-			public int convert(String rome) {
-				return 0;// not used
-			}
-			
-			@Override
-			public String convert(int zahl) {
+			public String convert(Integer zahl) {
 				return toRoman(zahl);
 			}
-		}, new I_Converter() {					//toArabic
+		}, new I_Converter<String, Integer>() {			//toArabic
 			
 			@Override
-			public int convert(String rome) {
+			public Integer convert(String rome) {
 				return fromRoman(rome);
-			}
-			
-			@Override
-			public String convert(int zahl) {
-				return null;// not used
 			}
 		});
 	}
 	
-	public static void convertRoman(String args, I_Converter toRoman, I_Converter toArab){
+	public static void chooseConverter(String args, I_Converter<Integer, String> toRoman, I_Converter<String, Integer> toArab){
 		if(args.matches("[0-9]+")){
 			toConsole(toRoman.convert(Integer.parseInt(args)));
 		}else{
