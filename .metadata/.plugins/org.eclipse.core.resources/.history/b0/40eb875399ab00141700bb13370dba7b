@@ -41,38 +41,10 @@ public class ConvertRoman {
 	}
 
 	public static String toRoman(int zahl){
-		List<Integer> summands = buildSummands(zahl);
 		return "x"+ zahl;
 	}
 
-	public static List<Integer> buildSummands(int zahl){
-		List<Integer> summands = new ArrayList<Integer>();
-		while(zahl > 1){
-			if(zahl - 1000 >= 0){
-				summands.add(1000);
-				zahl -= 1000;
-			}else if(zahl - 500 >= 0){
-				summands.add(500);
-				zahl -= 500;
-			}else if(zahl - 100 >= 0){
-				summands.add(100);
-				zahl -= 100;
-			}else if(zahl - 50 >= 0){
-				summands.add(50);
-				zahl -= 50;
-			}else if(zahl - 10 >= 0){
-				summands.add(10);
-				zahl -= 10;
-			}else if(zahl - 5 >= 0){
-				summands.add(5);
-				zahl -= 5;
-			}else{
-				summands.add(1);
-				zahl -= 1;
-			}
-		}
-		return summands;
-	}
+	//public static 
 	
 	private static void toConsole(String s){
 		System.out.println(s);

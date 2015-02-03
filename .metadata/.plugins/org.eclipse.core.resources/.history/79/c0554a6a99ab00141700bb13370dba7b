@@ -62,7 +62,7 @@ public class ConvertRoman {
 				zahl -= 50;
 			}else if(zahl - 10 >= 0){
 				summands.add(10);
-				zahl -= 10;
+				zahl -= 100;
 			}else if(zahl - 5 >= 0){
 				summands.add(5);
 				zahl -= 5;
